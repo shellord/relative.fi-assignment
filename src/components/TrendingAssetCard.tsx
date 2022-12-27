@@ -72,15 +72,22 @@ const HighlightBox: React.FC<{
   return (
     <div className="bg-gradient-to-b from-[#ECF0FF]/10 w-full p-[0.05rem] rounded-full flex justify-center ">
       <div className="flex bg-primary w-full h-ful p-2 rounded-full justify-center items-center">
-        <p className="text-white text-sm">${price}</p>
+        <div className="text-white text-sm">
+          <p>
+            $
+            {Intl.NumberFormat("en-IN", {
+              maximumSignificantDigits: 12,
+            }).format(price)}
+          </p>
+        </div>
         {percentageChange && (
-          <span className="text-xs ml-3">
+          <div className="text-xs inline-block ml-2">
             {percentageChange > 0 ? (
               <span className="text-green-500">+{percentageChange}%</span>
             ) : (
               <span className="text-red-500">{percentageChange}%</span>
             )}
-          </span>
+          </div>
         )}
       </div>
     </div>
